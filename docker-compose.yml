@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   jenkins-blueocean:
-    image: jenkins/jenkins:lts
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: jenkins-blueocean
     restart: unless-stopped
     ports:
@@ -12,7 +14,7 @@ services:
       - jenkins-data:/var/jenkins_home
     networks:
       - jenkins
-
+  
   postgres:
     image: postgres:latest
     container_name: postgres
@@ -24,7 +26,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432" # Mapping PostgreSQL service port 5432 to host port 9000
+      - "5432:5432"
     networks:
       - jenkins
 
