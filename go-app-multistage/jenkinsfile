@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    stages{
+       stage('Dev'){
+            steps{
+                // git repository
+                git 'https://github.com/AdminTurnedDevOps/go-webapp-sample.git'
+            }
+        }
+
+        stage('UAT'){
+            steps{
+               // git repository
+                git 'https://github.com/AdminTurnedDevOps/go-webapp-sample.git'
+            }
+        }
+    }
+}
